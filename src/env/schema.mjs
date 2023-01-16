@@ -7,6 +7,7 @@ import { z } from "zod";
  */
 export const serverSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
+  MOVIE_DB_API_KEY: z.string(),
 });
 
 /**
@@ -16,6 +17,7 @@ export const serverSchema = z.object({
  */
 export const serverEnv = {
   NODE_ENV: process.env.NODE_ENV,
+  MOVIE_DB_API_KEY: process.env.MOVIE_DB_API_KEY,
 };
 
 /**
@@ -24,7 +26,7 @@ export const serverEnv = {
  * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
  */
 export const clientSchema = z.object({
-  // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  NEXT_PUBLIC_MOVIE_DB_API_KEY: z.string(),
 });
 
 /**
@@ -34,5 +36,5 @@ export const clientSchema = z.object({
  * @type {{ [k in keyof z.infer<typeof clientSchema>]: z.infer<typeof clientSchema>[k] | undefined }}
  */
 export const clientEnv = {
-  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+  NEXT_PUBLIC_MOVIE_DB_API_KEY: process.env.NEXT_PUBLIC_MOVIE_DB_API_KEY,
 };

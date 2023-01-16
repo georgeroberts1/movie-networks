@@ -1,0 +1,26 @@
+FEATURES: 
+- Migrate to T3 boilerplate
+- Optimise for mobile
+- Add custom hooks
+- Check if selected person who is not one degree away has been in a cast with someone who is one degree away
+- Create a timer
+- Include IMDB link
+- Add loading indicator for secondaryNodes (images don't load immediately)
+- Host on vercel
+
+UNDECIDED FEATURES: (test and ask players)
+    - Add single target daily and create wordle like game
+    - Create a public session for two players to either compete / combine
+    - Pull target ids / images from popular api call instead of static json file
+    - Click on focused node to refresh secondary nodes
+    - Find films as well as actors
+
+BUGS:
+- 3293: Rachel Weiss id not in connection list to Olivia Colman - why???
+
+STYLING:
+- Add transition to rotate secondary nodes along y access on switching image
+- Central align solution (may not fill width)
+
+NOTES:
+- Homepage rendered twice because react is in strict mode (supposedly good for debugging in dev)
