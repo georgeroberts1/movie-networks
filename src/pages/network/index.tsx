@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from "react";
 
 import ConnectedNodeContainer from "../../components/organisms/ConnectedNodeContainer";
-import Template from "../template";
+import MainTemplate from "../../components/templates/Main";
 import Header from "../../components/organisms/Header";
 
 import { SecondaryNodeModes } from "../../types/app.types";
@@ -71,7 +71,7 @@ export default function Home({ upcomingFilms }) {
   };
 
   return (
-    <Template>
+    <MainTemplate>
       <Header boldHeaderContent={"Network"} href={PageHrefs.NETWORK} />
       <div
         style={{
@@ -93,6 +93,6 @@ export default function Home({ upcomingFilms }) {
           />
         )}
       </div>
-    </Template>
+    </MainTemplate>
   );
 }

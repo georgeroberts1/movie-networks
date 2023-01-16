@@ -1,7 +1,7 @@
-import { useAppContext } from "../components/organisms/ContextWrapper";
+import { useAppContext } from "../organisms/ContextWrapper";
 import Image from "next/image";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/template.module.css";
 
 export default function Template({ children }) {
   const [contextState, contextDispatch] = useAppContext();

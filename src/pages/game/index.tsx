@@ -5,7 +5,7 @@ import ConnectedNodeContainer from "../../components/organisms/ConnectedNodeCont
 import SelectionNetwork from "../../components/organisms/SelectionNetwork";
 
 import targets from "../../data/targetIds.json";
-import Template from "../template";
+import MainTemplate from "../../components/templates/Main";
 import Header from "../../components/organisms/Header";
 import { getPeopleOneDegreeFromTarget } from "../../data/generateTargetData";
 
@@ -109,7 +109,7 @@ export default function Home({ upcomingFilms }) {
   console.log(targets[targetId]?.name);
 
   return (
-    <Template>
+    <MainTemplate>
       {!!targets[targetId]?.name && (
         <Header
           headerContent={"Find"}
@@ -199,6 +199,6 @@ export default function Home({ upcomingFilms }) {
           ) : null}
         </div>
       </div>
-    </Template>
+    </MainTemplate>
   );
 }

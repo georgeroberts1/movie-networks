@@ -1,6 +1,5 @@
 FEATURES: 
-- Migrate to T3 boilerplate
-- Optimise for mobile
+- Optimise for mobile and convert to tailwind
 - Add custom hooks
 - Check if selected person who is not one degree away has been in a cast with someone who is one degree away
 - Create a timer
