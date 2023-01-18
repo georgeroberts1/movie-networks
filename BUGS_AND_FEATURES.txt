@@ -1,4 +1,6 @@
 FEATURES: 
+- Refactor ConnectedNodeContainer into ConnectedNode handler file??
+- Refactor client side api fetching to server side where possible and remove public env
 - Optimise for mobile and convert to tailwind
 - Add custom hooks
 - Check if selected person who is not one degree away has been in a cast with someone who is one degree away

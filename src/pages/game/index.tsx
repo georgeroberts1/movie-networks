@@ -1,5 +1,8 @@
 import React, { useState, useReducer, useEffect } from "react";
 
+import Image from "next/image";
+import LoadingImage from "../../styles/assets/loader.png";
+
 import MovieList from "../../components/organisms/MovieList";
 import ConnectedNodeContainer from "../../components/organisms/ConnectedNodeContainer";
 import SelectionNetwork from "../../components/organisms/SelectionNetwork";
@@ -135,11 +138,20 @@ export default function Home({ upcomingFilms }) {
               alignItems: "center",
             }}
           >
-            {isLoading ? (
-              <h1>
-                Loading connections
-                <br /> for {targets[targetId].name}...
-              </h1>
+            {!isLoading ? (
+              <div className="flex justify-center align-content-center">
+                <span className="">
+                  Loading connections
+                  <br /> for {targets[targetId].name}...
+                  <br />
+                  <Image
+                    src={LoadingImage}
+                    alt={"Movie loader"}
+                    width={130}
+                    height={100}
+                  />
+                </span>
+              </div>
             ) : (
               <ConnectedNodeContainer
                 selectedDataList={selectedDataList}
