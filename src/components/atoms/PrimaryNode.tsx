@@ -4,6 +4,7 @@ import Image from "next/image";
 import NodeContent from "./NodeContent";
 
 import { PrimaryNodeProps } from "../../types/component.types";
+import clsx from "clsx";
 
 function PrimaryNode({
   primarySize,
@@ -28,11 +29,10 @@ function PrimaryNode({
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{
-        position: "relative",
-        textAlign: "center",
-        zIndex: primaryHovering ? 3 : 2,
-      }}
+      className={clsx(
+        "relative text-center",
+        primaryHovering ? "z-[3]" : "z-[2]"
+      )}
     >
       <NodeContent
         showContent={showContent}
@@ -44,13 +44,13 @@ function PrimaryNode({
         width={primarySize}
         height={primarySize}
         priority={true}
-        style={{
-          objectFit: "contain",
-          transitionDuration: "500ms",
-          transitionProperty: "border-radius",
-          borderRadius: primaryHovering ? "0" : "50%",
-          opacity: primaryHovering ? 1 : showContent ? 0.4 : 1,
-        }}
+        className={clsx(
+          "object-contain duration-500 transition-all ",
+          primaryHovering
+            ? "rounded-[0] opacity-100"
+            : "rounded-[50%] opacity-100",
+          showContent ? "opacity-[0.4]" : "opacity-100"
+        )}
       ></Image>
     </div>
   );

@@ -50,7 +50,7 @@ function ConnectedNodes({
   );
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className="relative">
       <PrimaryNode
         primarySize={primarySize}
         alt={"alt"}

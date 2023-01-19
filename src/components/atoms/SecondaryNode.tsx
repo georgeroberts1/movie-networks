@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { SecondaryNodeProps } from "../../types/component.types";
 import Image from "next/image";
+import clsx from "clsx";
 
 const getCoordinates = (number, total, center, radius) => {
   const quarter = total / 4;
@@ -45,6 +46,8 @@ function SecondaryNode({
     hovering ? distanceFromCenter - 10 : distanceFromCenter
   );
 
+  const imageSize = hovering ? secondarySize * 1.2 : secondarySize;
+
   return (
     <>
       <div
@@ -53,8 +56,8 @@ function SecondaryNode({
         onClick={clickHandler}
         style={{
           position: "absolute",
-          width: `${hovering ? secondarySize * 1.2 : secondarySize}px`,
-          height: `${hovering ? secondarySize * 1.2 : secondarySize}px`,
+          width: `${imageSize}px`,
+          height: `${imageSize}px`,
           cursor: "pointer",
           top: 0,
           transform: `translate(${x}px, ${y}px)`,
@@ -74,15 +77,14 @@ function SecondaryNode({
         <Image
           src={imageSrc}
           alt={"Picture of " + alt}
-          width={hovering ? secondarySize * 1.2 : secondarySize}
-          height={hovering ? secondarySize * 1.2 : secondarySize}
+          width={imageSize}
+          height={imageSize}
           priority={false}
           quality={50}
-          style={{
-            objectFit: "contain",
-            borderRadius: `${imageType === "movie" ? "" : "50%"}`,
-            transition: "300ms",
-          }}
+          className={clsx(
+            "object-contain duration-300",
+            imageType === "movie" ? "rounded-[0]" : "rounded-[50%]"
+          )}
         ></Image>
       </div>
     </>
