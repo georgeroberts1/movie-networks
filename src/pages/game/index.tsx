@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 import React, { useState, useReducer, useEffect } from "react";
 
 import Image from "next/image";
@@ -8,7 +10,7 @@ import ConnectedNodeContainer from "../../components/organisms/ConnectedNodeCont
 import SelectionNetwork from "../../components/organisms/SelectionNetwork";
 
 import targets from "../../data/targetIds.json";
-import MainTemplate from "../../components/templates/Main";
+import MainTemplate from "../../components/templates/MainTemplate";
 import Header from "../../components/organisms/Header";
 import { getPeopleOneDegreeFromTarget } from "../../data/generateTargetData";
 
@@ -101,13 +103,8 @@ export default function Home({ upcomingFilms }) {
     });
   };
 
-  const headerStyle = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontWeight: 100,
-    fontSize: 30,
-  };
+  const headerStyle = "flex justify-center align-center font-thin text-xl";
+  const widthCheck = (condition) => (condition ? "w-full" : "w-6/12");
 
   console.log(targets[targetId]?.name);
 
@@ -120,25 +117,15 @@ export default function Home({ upcomingFilms }) {
           href={PageHrefs.GAME}
         />
       )}
-      <div
-        style={{
-          display: "flex",
-          width: "100vw",
-          padding: "0 3%",
-        }}
-      >
+      <div className="flex w-screen py-0 px-3">
         {!targetFound && selectedDataList.length > 0 && (
           <div
-            style={{
-              width: isLoading ? "100%" : "50%",
-              height: "100%",
-              marginTop: "150px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+            className={clsx(
+              "flex justify-center items-center h-full mt-40",
+              widthCheck(isLoading)
+            )}
           >
-            {!isLoading ? (
+            {isLoading ? (
               <div className="flex justify-center align-content-center">
                 <span className="">
                   Loading connections
@@ -163,19 +150,14 @@ export default function Home({ upcomingFilms }) {
           </div>
         )}
         <div
-          style={{
-            height: "100vh",
-            width:
-              targetFound || gameState === GameStateTypes.START
-                ? "100%"
-                : "50%",
-            overflow: "auto",
-            overflowY: "auto",
-          }}
+          className={clsx(
+            "h-screen overflow-auto overflow-y-auto",
+            widthCheck(targetFound || gameState === GameStateTypes.START)
+          )}
         >
           {selectedDataList.length === 0 ? (
             <>
-              <span style={{ ...headerStyle }}>
+              <span className={headerStyle}>
                 Start by choosing one of these upcoming movies...
               </span>
               <MovieList
@@ -187,7 +169,7 @@ export default function Home({ upcomingFilms }) {
             </>
           ) : !isLoading ? (
             <>
-              <span style={{ ...headerStyle }}>
+              <span className={headerStyle}>
                 {targetFound ? (
                   `Found in ${selectedDataList.length} link${
                     selectedDataList.length > 1 ? "s" : ""
@@ -195,9 +177,7 @@ export default function Home({ upcomingFilms }) {
                 ) : (
                   <>
                     <span>Links:&nbsp;</span>
-                    <span style={{ fontWeight: 300 }}>
-                      {selectedDataList.length}
-                    </span>
+                    <span className="font-thin">{selectedDataList.length}</span>
                   </>
                 )}
                 &nbsp; &nbsp; &nbsp;

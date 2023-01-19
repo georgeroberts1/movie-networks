@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from "react";
 
 import ConnectedNodeContainer from "../../components/organisms/ConnectedNodeContainer";
-import MainTemplate from "../../components/templates/Main";
+import MainTemplate from "../../components/templates/MainTemplate";
 import Header from "../../components/organisms/Header";
 
 import { SecondaryNodeModes } from "../../types/app.types";
@@ -13,6 +13,7 @@ import {
   PageHrefs,
 } from "../../types/app.types";
 import { dataListReducer } from "../../utils/Common";
+import clsx from "clsx";
 
 export async function getStaticProps() {
   const upcomingResponse = await fetch(
@@ -74,14 +75,10 @@ export default function Home({ upcomingFilms }) {
     <MainTemplate>
       <Header boldHeaderContent={"Network"} href={PageHrefs.NETWORK} />
       <div
-        style={{
-          width: isLoading ? "100%" : "50%",
-          height: "100%",
-          marginTop: "150px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+        className={clsx(
+          "flex items-center h-full mt-40",
+          isLoading ? "w-full" : "w-6/12"
+        )}
       >
         {isLoading ? (
           <h1>Loading...</h1>

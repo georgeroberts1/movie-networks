@@ -11,13 +11,7 @@ function ListItem({ imageSrc, size, alt, clickHandler }: ListItemProps) {
       width={size}
       height={size}
       onClick={clickHandler}
-      style={{
-        position: "relative",
-        objectFit: "contain",
-        cursor: "pointer",
-        // border: `solid 1px ${hovering ? "" : "white"}`,
-        transition: "1s",
-      }}
+      className="relative object-contain cursor-pointer duration-100"
     ></Image>
   );
 }

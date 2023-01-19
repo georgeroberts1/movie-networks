@@ -6,9 +6,6 @@ const SelectionNetwork = ({ selectedDataList, targetConnectionsList }) => {
     <div>
       {selectedDataList
         .map((data, i) => {
-          const borderStyle = targetConnectionsList.includes(data.id)
-            ? "3px solid gold"
-            : "";
           return (
             <Fragment key={i}>
               <Image
@@ -16,7 +13,11 @@ const SelectionNetwork = ({ selectedDataList, targetConnectionsList }) => {
                 height={150}
                 width={100}
                 src={data.image}
-                style={{ border: borderStyle }}
+                className={
+                  targetConnectionsList.includes(data.id)
+                    ? "borer-gold-[300]"
+                    : ""
+                }
               />
             </Fragment>
           );
