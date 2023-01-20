@@ -14,3 +14,7 @@ export const getCreditsUrl = (id, type) => {
 
 export const getPopularPeopleUrl = () =>
   `${ApiConfig.API_URL}/person/popular?api_key=${env.NEXT_PUBLIC_MOVIE_DB_API_KEY}&language=en-US&page=1&include_adult=false`;
+
+export const StaticUrls = {
+  upcomingMovies: `${ApiConfig.API_URL}movie/upcoming?api_key=${env.MOVIE_DB_API_KEY}&language=en-US`,
+};

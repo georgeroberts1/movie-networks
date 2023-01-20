@@ -14,10 +14,9 @@ import MainTemplate from "../../components/templates/MainTemplate";
 import Header from "../../components/organisms/Header";
 import { getPeopleOneDegreeFromTarget } from "../../data/generateTargetData";
 
-import { env } from "../../env/server.mjs";
+import { StaticUrls } from "../../utils/api/urlUtils";
 import {
   GameStateTypes,
-  ApiConfig,
   StateReducerActions,
   SecondaryNodeModes,
   PageHrefs,
@@ -32,10 +31,9 @@ const getRandomElement = (arr) => {
 };
 
 export async function getStaticProps() {
-  const upcomingResponse = await fetch(
-    `${ApiConfig.API_URL}movie/upcoming?api_key=${env.MOVIE_DB_API_KEY}&language=en-US`,
-    { next: { revalidate: 604800 } }
-  );
+  const upcomingResponse = await fetch(StaticUrls.upcomingMovies, {
+    next: { revalidate: 604800 },
+  });
   const upcomingFilms = await upcomingResponse.json();
   return {
     props: {
