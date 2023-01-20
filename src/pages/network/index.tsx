@@ -74,10 +74,7 @@ export default function Home({ upcomingFilms }) {
   return (
     <MainTemplate boldHeaderContent={"Network"} href={PageHrefs.NETWORK}>
       <div
-        className={clsx(
-          "flex items-center h-full mt-40",
-          isLoading ? "w-full" : "w-6/12"
-        )}
+        className={clsx("flex justify-center items-center w-full h-full mt-40")}
       >
         {isLoading ? (
           <h1>Loading...</h1>
