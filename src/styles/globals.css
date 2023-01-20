@@ -6,9 +6,22 @@
   body {
     @apply font-sans
   }
+
+  header {
+    @apply flex justify-between w-full items-center 
+    px-4 py-4 transition-all lg:px-10 lg:py-6
+  }
 }
 
 @layer components {
+  .headerTitle {
+    @apply font-thin text-[30px]
+  }
+
+  .headerColumn {
+    @apply flex items-center justify-between
+  }
+  
   .bigFeedback{
     @apply flex justify-center items-center font-thin text-xl;
   }

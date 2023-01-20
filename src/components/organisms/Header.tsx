@@ -12,11 +12,6 @@ const Header = ({ headerContent, boldHeaderContent, href }) => {
 
   const hrefArray = Object.values(PageHrefs);
   const linkLabel = (href) => href.split("/")[1].toUpperCase();
-  const Column = ({ children }) => (
-    <div className={clsx("flex items-center w-4/12 justify-evenly")}>
-      {children}
-    </div>
-  );
 
   const iconProps = {
     onClick: handleClick,
@@ -24,15 +19,14 @@ const Header = ({ headerContent, boldHeaderContent, href }) => {
   };
 
   return (
-    <header className="flex justify-between w-full">
-      <Column></Column>
-      <Column>
-        <span className="flex justify-center items-center font-thin text-[30px]">
+    <header>
+      <div className="headerColumn">
+        <span className="headerTitle">
           {headerContent || ""}
           <span className="font-light">&nbsp;{boldHeaderContent}</span>
         </span>
-      </Column>
-      <Column>
+      </div>
+      <div className="headerColumn">
         <div>
           {hrefArray.map((element, i) => (
             <Link
@@ -52,7 +46,7 @@ const Header = ({ headerContent, boldHeaderContent, href }) => {
         ) : (
           <BsMoon {...iconProps} />
         )}
-      </Column>
+      </div>
     </header>
   );
 };
