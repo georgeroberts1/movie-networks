@@ -1,3 +1,4 @@
+import "../styles/globals.css";
 import { type NextPage } from "next";
 import Head from "next/head";
 import Header from "../components/organisms/Header";

@@ -103,7 +103,6 @@ export default function Home({ upcomingFilms }) {
     });
   };
 
-  const headerStyle = "flex justify-center align-center font-thin text-xl";
   const widthCheck = (condition) => (condition ? "w-full" : "w-6/12");
 
   console.log(targets[targetId]?.name);
@@ -157,7 +156,7 @@ export default function Home({ upcomingFilms }) {
         >
           {selectedDataList.length === 0 ? (
             <>
-              <span className={headerStyle}>
+              <span className="bigFeedback">
                 Start by choosing one of these upcoming movies...
               </span>
               <MovieList
@@ -169,7 +168,7 @@ export default function Home({ upcomingFilms }) {
             </>
           ) : !isLoading ? (
             <>
-              <span className={headerStyle}>
+              <span className="bigFeedback">
                 {targetFound ? (
                   `Found in ${selectedDataList.length} link${
                     selectedDataList.length > 1 ? "s" : ""

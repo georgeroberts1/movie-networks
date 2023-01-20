@@ -1,27 +1,30 @@
 FEATURES: 
+- Refactor client side api fetching to server side where possible and remove NEXT_PUBLIC_MOVIE_DB_API_KEY
 - Refactor ConnectedNodeContainer into ConnectedNode handler file??
-- Refactor client side api fetching to server side where possible and remove public env
-- Optimise for mobile and convert to tailwind
 - Add custom hooks
 - Check if selected person who is not one degree away has been in a cast with someone who is one degree away
 - Create a timer
 - Include IMDB link
-- Add loading indicator for secondaryNodes (images don't load immediately)
 - Host on vercel
 
 UNDECIDED FEATURES: (test and ask players)
-    - Add single target daily and create wordle like game
-    - Create a public session for two players to either compete / combine
-    - Pull target ids / images from popular api call instead of static json file
-    - Click on focused node to refresh secondary nodes
-    - Find films as well as actors
+- Add single target daily and create wordle like game
+- Create a public session for two players to either compete / combine
+- Pull target ids / images from popular api call instead of static json file
+- Click on focused node to refresh secondary nodes
+- Find films as well as actors
+
+STYLING:
+- Optimise for mobile
+- Replace columns with tailwind flex columns - https://tailwindcss.com/docs/flex-direction
+- Add transition to rotate secondary nodes along y access on switching image
+- Central align solution (may not fill width)
+- Add loading indicator for secondaryNodes (images don't load immediately)
+- Create dark mode theme: https://tailwindcss.com/docs/dark-mode
 
 BUGS:
 - 3293: Rachel Weiss id not in connection list to Olivia Colman - why???
-
-STYLING:
-- Add transition to rotate secondary nodes along y access on switching image
-- Central align solution (may not fill width)
+- Styling: Nodes no longer taking account of size property on next image component
 
 NOTES:
 - Homepage rendered twice because react is in strict mode (supposedly good for debugging in dev)
