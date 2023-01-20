@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { ListItemProps } from "../../types/component.types";
-const handleNodeClick = () => alert("Expand to middle");
 
 function ListItem({ imageSrc, size, alt, clickHandler }: ListItemProps) {
   return (
@@ -11,7 +10,7 @@ function ListItem({ imageSrc, size, alt, clickHandler }: ListItemProps) {
       width={size}
       height={size}
       onClick={clickHandler}
-      className="relative object-contain cursor-pointer duration-100"
+      className="inline-flex object-contain cursor-pointer duration-100"
     ></Image>
   );
 }

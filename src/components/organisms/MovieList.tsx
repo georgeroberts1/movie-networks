@@ -3,7 +3,7 @@ import { getImageUrl } from "../../utils/api/urlUtils";
 
 import { GameStateTypes } from "../../types/app.types";
 
-export default function List({
+export default function MovieList({
   movieArray,
   gameState,
   setGameState,

@@ -153,7 +153,7 @@ export default function Home({ upcomingFilms }) {
         )}
         <div
           className={clsx(
-            "h-screen overflow-auto overflow-y-auto",
+            "h-screen w-full justify-center overflow-auto overflow-y-auto",
             widthCheck(targetFound || gameState === GameStateTypes.START)
           )}
         >
