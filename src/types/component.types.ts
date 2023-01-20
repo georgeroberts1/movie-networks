@@ -48,6 +48,8 @@ export interface ConnectedNodeContainerProps {
   selectedDataList: [];
   secondaryNodeClickHandler: HandleClick;
   secondaryNodeFilter: string;
+  connectionsLoading: boolean;
+  targetName: string;
 }
 
 export interface SecondaryNodeData

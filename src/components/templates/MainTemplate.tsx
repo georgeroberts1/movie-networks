@@ -3,7 +3,9 @@ import Image from "next/image";
 import Head from "next/head";
 import clsx from "clsx";
 
-export default function Template({ children }: React.ReactNode) {
+import Header from "../organisms/Header";
+
+export default function Template({ children, ...props }: React.ReactNode) {
   const [contextState, contextDispatch] = useAppContext();
 
   return (
@@ -21,7 +23,8 @@ export default function Template({ children }: React.ReactNode) {
       </Head>
 
       <main className="min-h-screen flex flex-col items-center py-0 pt-8 pb-1">
-        {children}
+        <Header {...props} />
+        <div className="flex w-screen py-0 px-3">{children}</div>
       </main>
 
       <footer className="flex-1 items-center pt-0 px-8 pb-4 border-t-[.1px] border-black-200">

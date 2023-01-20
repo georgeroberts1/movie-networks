@@ -2,7 +2,6 @@ import React, { useState, useReducer, useEffect } from "react";
 
 import ConnectedNodeContainer from "../../components/organisms/ConnectedNodeContainer";
 import MainTemplate from "../../components/templates/MainTemplate";
-import Header from "../../components/organisms/Header";
 
 import { SecondaryNodeModes } from "../../types/app.types";
 
@@ -73,8 +72,7 @@ export default function Home({ upcomingFilms }) {
   };
 
   return (
-    <MainTemplate>
-      <Header boldHeaderContent={"Network"} href={PageHrefs.NETWORK} />
+    <MainTemplate boldHeaderContent={"Network"} href={PageHrefs.NETWORK}>
       <div
         className={clsx(
           "flex items-center h-full mt-40",

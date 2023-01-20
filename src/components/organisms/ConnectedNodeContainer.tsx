@@ -9,10 +9,11 @@ const ConnectedNodeContainer = ({
   selectedDataList,
   secondaryNodeClickHandler,
   secondaryNodeFilter,
+  connectionsLoading,
+  targetName,
 }: ConnectedNodeContainerProps) => {
   const [response, setResponse] = useState({});
-  const [error, setError] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState({});
 
   const fetchData = async (apiUrl) => {
     setIsLoading(true);
@@ -64,7 +65,21 @@ const ConnectedNodeContainer = ({
     ? getSecondaryNodes(response?.cast, type, secondaryNodeFilter)
     : [];
 
-  return (
+  return connectionsLoading ? (
+    <div className="flex justify-center align-content-center">
+      <span className="">
+        Loading connections
+        <br /> for {targetName}...
+        <br />
+        <Image
+          src={LoadingImage}
+          alt={"Movie loader"}
+          width={130}
+          height={100}
+        />
+      </span>
+    </div>
+  ) : (
     <ConnectedNodes
       primarySize={510}
       primaryContent={primaryContent}

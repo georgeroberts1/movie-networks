@@ -11,7 +11,6 @@ import SelectionNetwork from "../../components/organisms/SelectionNetwork";
 
 import targets from "../../data/targetIds.json";
 import MainTemplate from "../../components/templates/MainTemplate";
-import Header from "../../components/organisms/Header";
 import { getPeopleOneDegreeFromTarget } from "../../data/generateTargetData";
 
 import { buildApiUrl } from "../../utils/api/urlUtils";
@@ -106,92 +105,55 @@ export default function Home({ upcomingFilms }) {
     });
   };
 
-  const widthCheck = (condition) => (condition ? "w-full" : "w-6/12");
-
-  console.log(targets[targetId]?.name);
-
   return (
-    <MainTemplate>
-      {!!targets[targetId]?.name && (
-        <Header
-          headerContent={"Find"}
-          boldHeaderContent={targets[targetId]?.name}
-          href={PageHrefs.GAME}
-        />
-      )}
-      <div className="flex w-screen py-0 px-3">
-        {!targetFound && selectedDataList.length > 0 && (
-          <div
-            className={clsx(
-              "flex justify-center items-center h-full mt-40",
-              widthCheck(isLoading)
-            )}
-          >
-            {isLoading ? (
-              <div className="flex justify-center align-content-center">
-                <span className="">
-                  Loading connections
-                  <br /> for {targets[targetId].name}...
-                  <br />
-                  <Image
-                    src={LoadingImage}
-                    alt={"Movie loader"}
-                    width={130}
-                    height={100}
-                  />
-                </span>
-              </div>
-            ) : (
-              <ConnectedNodeContainer
-                selectedDataList={selectedDataList}
-                targetId={targetId}
-                secondaryNodeClickHandler={handleSelectionClick}
-                secondaryNodeFilter={SecondaryNodeModes.GAME}
-              />
-            )}
-          </div>
-        )}
+    <MainTemplate
+      headerContent="Find"
+      boldHeaderContent={targets[targetId]?.name || ""}
+      href={PageHrefs.GAME}
+    >
+      {/* Node container */}
+      {!targetFound && selectedDataList.length > 0 && (
         <div
           className={clsx(
-            "h-screen w-full justify-center overflow-auto overflow-y-auto",
-            widthCheck(targetFound || gameState === GameStateTypes.START)
+            "flex justify-center items-center h-full mt-40",
+            isLoading ? "w-full" : "w-6/12"
           )}
         >
-          {selectedDataList.length === 0 ? (
-            <>
-              <span className="bigFeedback">
-                Start by choosing one of these upcoming movies...
-              </span>
-              <MovieList
-                movieArray={upcomingFilmData}
-                gameState={gameState}
-                setGameState={setGameState}
-                selectionClickHandler={handleSelectionClick}
-              />
-            </>
-          ) : !isLoading ? (
-            <>
-              <span className="bigFeedback">
-                {targetFound ? (
-                  `Found in ${selectedDataList.length} link${
-                    selectedDataList.length > 1 ? "s" : ""
-                  }!`
-                ) : (
-                  <>
-                    <span>Links:&nbsp;</span>
-                    <span className="font-thin">{selectedDataList.length}</span>
-                  </>
-                )}
-                &nbsp; &nbsp; &nbsp;
-                <button onClick={handleResetGame}>Find another name</button>
-              </span>
-              <SelectionNetwork
-                selectedDataList={selectedDataList}
-                targetConnectionsList={targetConnectionsList}
-              />
-            </>
-          ) : null}
+          <ConnectedNodeContainer
+            selectedDataList={selectedDataList}
+            secondaryNodeClickHandler={handleSelectionClick}
+            secondaryNodeFilter={SecondaryNodeModes.GAME}
+            connectionsLoading={isLoading}
+            targetName={targets[targetId].name}
+          />
         </div>
+      )}
+      {/* MovieList */}
+      <div
+        className={clsx(
+          "h-screen w-full justify-center overflow-auto overflow-y-auto",
+          targetFound || gameState === GameStateTypes.START
+            ? "w-full"
+            : "w-6/12"
+        )}
+      >
+        {selectedDataList.length === 0 && (
+          <MovieList
+            movieArray={upcomingFilmData}
+            gameState={gameState}
+            setGameState={setGameState}
+            selectionClickHandler={handleSelectionClick}
+          />
+        )}
+
+        {!isLoading && (
+          <SelectionNetwork
+            selectedDataList={selectedDataList}
+            targetConnectionsList={targetConnectionsList}
+            targetFound={targetFound}
+            handleResetGame={handleResetGame}
+          />
+        )}
       </div>
     </MainTemplate>
   );
