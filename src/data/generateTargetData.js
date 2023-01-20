@@ -1,4 +1,4 @@
-import { getCreditsUrl, getPopularPeopleUrl } from "../utils/api/urlUtils";
+import { getCreditsUrl, StaticUrls } from "../utils/api/urlUtils";
 
 const getDataFromApi = async (array, category) => {
   try {
@@ -17,14 +17,16 @@ const getDataFromApi = async (array, category) => {
 };
 
 export const fetchPopularNames = async () => {
-  const response = await fetch(getPopularPeopleUrl(), {
+  const response = await fetch(StaticUrls.getPopularPeopleUrl, {
     next: { revalidate: 86400 },
   });
   return await response.json();
 };
 
 export const getTargetCredits = async (targetId) => {
-  const targetResponse = await fetch(getCreditsUrl(targetId, "person"), {
+  const creditsUrl = getCreditsUrl(targetId, "person");
+  console.log("creditsUrl", creditsUrl);
+  const targetResponse = await fetch(creditsUrl, {
     next: { revalidate: 86400 },
   });
   return await targetResponse.json();

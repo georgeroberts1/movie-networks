@@ -7,15 +7,20 @@ import Header from "../../components/organisms/Header";
 import { SecondaryNodeModes } from "../../types/app.types";
 
 import { StateReducerActions, PageHrefs } from "../../types/app.types";
-import { StaticUrls } from "../../utils/api/urlUtils";
+import { buildApiUrl } from "../../utils/api/urlUtils";
 import { dataListReducer } from "../../utils/Common";
+
+import { env } from "../../env/server.mjs";
 
 import clsx from "clsx";
 
 export async function getStaticProps() {
-  const upcomingResponse = await fetch(StaticUrls.upcomingMovies, {
-    next: { revalidate: 604800 },
-  });
+  const upcomingResponse = await fetch(
+    buildApiUrl("movie/upcoming", env.MOVIE_DB_API_KEY),
+    {
+      next: { revalidate: 604800 },
+    }
+  );
   const upcomingFilms = await upcomingResponse.json();
   return {
     props: {
