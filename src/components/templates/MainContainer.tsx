@@ -15,6 +15,7 @@ export default function MainContainer({
   return (
     <div
       className={clsx(
+        "min-h-screen flex flex-col justify-between",
         contextState.lightMode === "light"
           ? "bg-black text-white"
           : "bg-white text-black"
@@ -26,13 +27,11 @@ export default function MainContainer({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen flex flex-col items-center py-2">
-        <Header {...props} />
-        <div
-          className={`w-screen py-0 px-3 transition-all lg:columns-${lgColumns} xs:columns-1`}
-        >
-          {children}
-        </div>
+      <Header {...props} />
+      <main
+        className={`flex flex-col items-center py-2 w-screen py-0 px-3 transition-all lg:columns-${lgColumns} xs:columns-1`}
+      >
+        {children}
       </main>
 
       <footer className="border-t-[.5px] border-black-200">

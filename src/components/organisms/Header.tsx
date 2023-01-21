@@ -26,26 +26,27 @@ const Header = ({ headerContent, boldHeaderContent, href }) => {
           <span className="font-light">&nbsp;{boldHeaderContent}</span>
         </span>
       </div>
-      <div className="headerColumn flex-col sm:flex-row">
-        {hrefArray.map((element, i) => (
-          <Link
-            key={i}
-            href={element}
-            className={clsx(
-              "my-0 mx-[10px] py-0 px-[10px] cursor-pointer",
-              href === element && "text-green-500"
+      <div className="headerColumn">
+        <ul className="flex flex-col-reverse items-end sm:flex-row sm:items-center space-x-4">
+          {hrefArray.map((element, i) => (
+            <li>
+              <Link
+                key={i}
+                href={element}
+                className={clsx(href === element && "text-green-500")}
+              >
+                {linkLabel(element)}
+              </Link>
+            </li>
+          ))}
+          <li className="mb-1 sm:mb-0">
+            {contextState.lightMode === "light" ? (
+              <BsSun {...iconProps} />
+            ) : (
+              <BsMoon {...iconProps} />
             )}
-          >
-            {linkLabel(element)}
-          </Link>
-        ))}
-        <div className="mt-2 sm:mt-0">
-          {contextState.lightMode === "light" ? (
-            <BsSun {...iconProps} />
-          ) : (
-            <BsMoon {...iconProps} />
-          )}
-        </div>
+          </li>
+        </ul>
       </div>
     </header>
   );

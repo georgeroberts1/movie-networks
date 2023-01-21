@@ -7,9 +7,17 @@
     @apply font-sans
   }
 
+  header {
+    @apply fixed z-50 backdrop-blur h-[77]
+  }
+
   header, footer {
     @apply flex justify-between w-full items-center 
     px-4 py-4 transition-all lg:px-10 lg:py-6
+  }
+
+  main {
+    @apply mt-[90px]
   }
 }
 
