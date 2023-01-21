@@ -73,11 +73,7 @@ export default function Home({ upcomingFilms }) {
   };
 
   return (
-    <MainContainer
-      boldHeaderContent={"Network"}
-      href={PageHrefs.NETWORK}
-      lgColumns={1}
-    >
+    <MainContainer boldHeaderContent={"Network"} href={PageHrefs.NETWORK}>
       {isLoading && <h1>Loading...</h1>}
 
       <MainColumn isShowing={!isLoading}>

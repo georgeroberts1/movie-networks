@@ -5,13 +5,8 @@ import clsx from "clsx";
 
 import Header from "../organisms/Header";
 
-export default function MainContainer({
-  children,
-  lgColumns,
-  ...props
-}: React.ReactNode) {
+export default function MainContainer({ children, ...props }: React.ReactNode) {
   const [contextState, contextDispatch] = useAppContext();
-  console.log(lgColumns);
   return (
     <div
       className={clsx(
@@ -28,9 +23,7 @@ export default function MainContainer({
       </Head>
 
       <Header {...props} />
-      <main
-        className={`w-screen py-2 px-3 transition-all columns-1 md:columns-${lgColumns}`}
-      >
+      <main className={`w-screen py-2 px-3 transition-all flex`}>
         {children}
       </main>
 
