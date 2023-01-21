@@ -2,6 +2,7 @@ import React, { useState, useReducer, useEffect } from "react";
 
 import ConnectedNodeContainer from "../../components/organisms/ConnectedNodeContainer";
 import MainContainer from "../../components/templates/MainContainer";
+import MainColumn from "../../components/templates/MainColumn";
 
 import { SecondaryNodeModes } from "../../types/app.types";
 
@@ -72,20 +73,20 @@ export default function Home({ upcomingFilms }) {
   };
 
   return (
-    <MainContainer boldHeaderContent={"Network"} href={PageHrefs.NETWORK}>
-      <div
-        className={clsx("flex justify-center items-center w-full h-full mt-40")}
-      >
-        {isLoading ? (
-          <h1>Loading...</h1>
-        ) : (
-          <ConnectedNodeContainer
-            selectedDataList={selectedDataList}
-            secondaryNodeClickHandler={handleClick}
-            secondaryNodeFilter={SecondaryNodeModes.PROFILE}
-          />
-        )}
-      </div>
+    <MainContainer
+      boldHeaderContent={"Network"}
+      href={PageHrefs.NETWORK}
+      lgColumns={1}
+    >
+      {isLoading && <h1>Loading...</h1>}
+
+      <MainColumn isShowing={!isLoading}>
+        <ConnectedNodeContainer
+          selectedDataList={selectedDataList}
+          secondaryNodeClickHandler={handleClick}
+          secondaryNodeFilter={SecondaryNodeModes.PROFILE}
+        />
+      </MainColumn>
     </MainContainer>
   );
 }

@@ -1,5 +1,3 @@
-import clsx from "clsx";
-
 import React, { useState, useReducer, useEffect } from "react";
 
 import MovieList from "../../components/organisms/MovieList";
@@ -108,6 +106,7 @@ export default function Home({ upcomingFilms }) {
       headerContent="Find"
       boldHeaderContent={targets[targetId]?.name}
       href={PageHrefs.GAME}
+      lgColumns={selectedDataList.length > 0 ? 2 : 1}
     >
       <MainColumn isShowing={!targetFound && selectedDataList.length > 0}>
         <ConnectedNodeContainer
@@ -128,7 +127,7 @@ export default function Home({ upcomingFilms }) {
         />
       </MainColumn>
 
-      <MainColumn isShowing={!isLoading}>
+      <MainColumn isShowing={selectedDataList.length > 0}>
         <SelectionNetwork
           selectedDataList={selectedDataList}
           targetConnectionsList={targetConnectionsList}

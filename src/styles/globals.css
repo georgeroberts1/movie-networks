@@ -7,7 +7,7 @@
     @apply font-sans
   }
 
-  header {
+  header, footer {
     @apply flex justify-between w-full items-center 
     px-4 py-4 transition-all lg:px-10 lg:py-6
   }
