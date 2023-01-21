@@ -8,16 +8,16 @@
   }
 
   header {
-    @apply fixed z-50 backdrop-blur h-[77]
+    @apply fixed top-0 z-50 backdrop-blur
+  }
+
+  footer {
+    @apply bottom-0 z-0 backdrop-blur
   }
 
   header, footer {
     @apply flex justify-between w-full items-center 
     px-4 py-4 transition-all lg:px-10 lg:py-6
-  }
-
-  main {
-    @apply mt-[90px]
   }
 }
 

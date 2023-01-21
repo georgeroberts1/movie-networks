@@ -11,7 +11,7 @@ const SelectionNetwork = ({
   return (
     <>
       <div className="flex flex-col">
-        <div className="flex justify-between md:justify-evenly">
+        <div className="flex justify-between lg:justify-evenly">
           {targetFound ? (
             <span className="bigFeedback">
               Found in {dataListLength} link

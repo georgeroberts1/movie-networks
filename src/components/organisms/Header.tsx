@@ -19,36 +19,39 @@ const Header = ({ headerContent, boldHeaderContent, href }) => {
   };
 
   return (
-    <header>
-      <div className="headerColumn">
-        <span className="headerTitle">
-          {headerContent || ""}
-          <span className="font-light">&nbsp;{boldHeaderContent}</span>
-        </span>
-      </div>
-      <div className="headerColumn">
-        <ul className="flex flex-col-reverse items-end sm:flex-row sm:items-center space-x-4">
-          {hrefArray.map((element, i) => (
-            <li>
-              <Link
-                key={i}
-                href={element}
-                className={clsx(href === element && "text-green-500")}
-              >
-                {linkLabel(element)}
-              </Link>
+    <>
+      <div className="h-[90px]" aria-label="proxy header"></div>
+      <header>
+        <div className="headerColumn">
+          <span className="headerTitle">
+            {headerContent || ""}
+            <span className="font-light">&nbsp;{boldHeaderContent}</span>
+          </span>
+        </div>
+        <div className="headerColumn">
+          <ul className="flex flex-col-reverse items-end sm:flex-row sm:items-center space-x-4">
+            {hrefArray.map((element, i) => (
+              <li>
+                <Link
+                  key={i}
+                  href={element}
+                  className={clsx(href === element && "text-green-500")}
+                >
+                  {linkLabel(element)}
+                </Link>
+              </li>
+            ))}
+            <li className="mb-1 sm:mb-0">
+              {contextState.lightMode === "light" ? (
+                <BsSun {...iconProps} />
+              ) : (
+                <BsMoon {...iconProps} />
+              )}
             </li>
-          ))}
-          <li className="mb-1 sm:mb-0">
-            {contextState.lightMode === "light" ? (
-              <BsSun {...iconProps} />
-            ) : (
-              <BsMoon {...iconProps} />
-            )}
-          </li>
-        </ul>
-      </div>
-    </header>
+          </ul>
+        </div>
+      </header>
+    </>
   );
 };
 

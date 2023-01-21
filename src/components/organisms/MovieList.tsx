@@ -11,11 +11,11 @@ export default function MovieList({
   selectionClickHandler,
 }) {
   return (
-    <div className={clsx("w-full overflow-auto overflow-y-auto")}>
+    <div className="w-full">
       <span className="bigFeedback">
         Start by choosing one of these upcoming movies...
       </span>
-      <div className="flex">
+      <div className="flex overflow-auto overflow-y-auto">
         {movieArray.map((movie, i) => {
           const { id, title, poster_path } = movie;
           const fullPosterPath = getImageUrl(poster_path, "w500");
@@ -29,7 +29,8 @@ export default function MovieList({
             <ListItem
               key={i}
               imageSrc={fullPosterPath}
-              size={300}
+              width={500}
+              height={750}
               alt={title}
               clickHandler={handleClick}
             />

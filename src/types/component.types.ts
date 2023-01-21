@@ -58,7 +58,8 @@ export interface SecondaryNodeData
 
 export interface ListItemProps {
   imageSrc: string;
-  size: number;
+  width: number;
+  height: number;
   alt: string;
   clickHandler: HandleClick;
 }

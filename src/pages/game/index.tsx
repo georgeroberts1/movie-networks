@@ -13,6 +13,9 @@ import { buildApiUrl } from "../../utils/api/urlUtils";
 import { dataListReducer } from "../../utils/Common";
 import { env } from "../../env/server.mjs";
 
+import Image from "next/image";
+import LoadingImage from "../../styles/assets/loader.png";
+
 import {
   GameStateTypes,
   StateReducerActions,
@@ -108,16 +111,6 @@ export default function Home({ upcomingFilms }) {
       href={PageHrefs.GAME}
       lgColumns={selectedDataList.length > 0 ? 2 : 1}
     >
-      <MainColumn isShowing={!targetFound && selectedDataList.length > 0}>
-        <ConnectedNodeContainer
-          selectedDataList={selectedDataList}
-          secondaryNodeClickHandler={handleSelectionClick}
-          secondaryNodeFilter={SecondaryNodeModes.GAME}
-          connectionsLoading={isLoading}
-          targetName={targets[targetId]?.name}
-        />
-      </MainColumn>
-
       <MainColumn isShowing={selectedDataList.length === 0}>
         <MovieList
           movieArray={upcomingFilmData}
@@ -127,14 +120,38 @@ export default function Home({ upcomingFilms }) {
         />
       </MainColumn>
 
-      <MainColumn isShowing={selectedDataList.length > 0}>
-        <SelectionNetwork
-          selectedDataList={selectedDataList}
-          targetConnectionsList={targetConnectionsList}
-          targetFound={targetFound}
-          handleResetGame={handleResetGame}
-        />
-      </MainColumn>
+      {isLoading ? (
+        <MainColumn isShowing={selectedDataList.length > 0}>
+          <div className="flex justify-center items-center">
+            <Image
+              src={LoadingImage}
+              alt={"Movie loader"}
+              width={130}
+              height={100}
+            />
+          </div>
+        </MainColumn>
+      ) : (
+        <>
+          <MainColumn isShowing={!targetFound && selectedDataList.length > 0}>
+            <ConnectedNodeContainer
+              selectedDataList={selectedDataList}
+              secondaryNodeClickHandler={handleSelectionClick}
+              secondaryNodeFilter={SecondaryNodeModes.GAME}
+              connectionsLoading={isLoading}
+            />
+          </MainColumn>
+
+          <MainColumn isShowing={selectedDataList.length > 0}>
+            <SelectionNetwork
+              selectedDataList={selectedDataList}
+              targetConnectionsList={targetConnectionsList}
+              targetFound={targetFound}
+              handleResetGame={handleResetGame}
+            />
+          </MainColumn>
+        </>
+      )}
     </MainContainer>
   );
 }

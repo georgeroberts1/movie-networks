@@ -11,11 +11,11 @@ export default function MainContainer({
   ...props
 }: React.ReactNode) {
   const [contextState, contextDispatch] = useAppContext();
-
+  console.log(lgColumns);
   return (
     <div
       className={clsx(
-        "min-h-screen flex flex-col justify-between",
+        "flex flex-col justify-between min-h-screen",
         contextState.lightMode === "light"
           ? "bg-black text-white"
           : "bg-white text-black"
@@ -29,7 +29,7 @@ export default function MainContainer({
 
       <Header {...props} />
       <main
-        className={`flex flex-col items-center py-2 w-screen py-0 px-3 transition-all lg:columns-${lgColumns} xs:columns-1`}
+        className={`w-screen py-2 px-3 transition-all columns-1 md:columns-${lgColumns}`}
       >
         {children}
       </main>

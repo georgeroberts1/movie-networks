@@ -4,16 +4,11 @@ import ConnectedNodes from "../molecules/ConnectedNodes";
 import { createContent, getSecondaryNodes } from "../../utils/Common";
 import { getCreditsUrl } from "../../utils/api/urlUtils";
 import { ConnectedNodeContainerProps } from "../../types/component.types";
-import clsx from "clsx";
-import Image from "next/image";
-import LoadingImage from "../../styles/assets/loader.png";
 
 const ConnectedNodeContainer = ({
   selectedDataList,
   secondaryNodeClickHandler,
   secondaryNodeFilter,
-  connectionsLoading,
-  targetName,
 }: ConnectedNodeContainerProps) => {
   const [response, setResponse] = useState({});
   const [isLoading, setIsLoading] = useState({});
@@ -70,31 +65,15 @@ const ConnectedNodeContainer = ({
 
   return (
     <div className="flex justify-center mt-40">
-      {connectionsLoading ? (
-        <div className="flex justify-center items-center">
-          <span className="">
-            Loading connections
-            <br /> for {targetName}...
-            <br />
-            <Image
-              src={LoadingImage}
-              alt={"Movie loader"}
-              width={130}
-              height={100}
-            />
-          </span>
-        </div>
-      ) : (
-        <ConnectedNodes
-          primarySize={510}
-          primaryContent={primaryContent}
-          primaryType={type}
-          primaryImage={image}
-          secondarySize={200}
-          secondaryNodeArray={secondaryNodes}
-          clickHandler={secondaryNodeClickHandler}
-        />
-      )}
+      <ConnectedNodes
+        primarySize={510}
+        primaryContent={primaryContent}
+        primaryType={type}
+        primaryImage={image}
+        secondarySize={200}
+        secondaryNodeArray={secondaryNodes}
+        clickHandler={secondaryNodeClickHandler}
+      />
     </div>
   );
 };
