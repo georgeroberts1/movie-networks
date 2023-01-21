@@ -10,7 +10,7 @@ export default function MainContainer({ children, ...props }: React.ReactNode) {
   return (
     <div
       className={clsx(
-        "flex flex-col justify-between min-h-screen",
+        "flex flex-col justify-between min-h-screen overflow-hidden",
         contextState.lightMode === "light"
           ? "bg-black text-white"
           : "bg-white text-black"
@@ -28,7 +28,7 @@ export default function MainContainer({ children, ...props }: React.ReactNode) {
       </main>
 
       <footer className="border-t-[.5px] border-black-200">
-        <div className="flex py-2 px-2">
+        <div className="flex py-0 px-2">
           <span className="mr-2">Powered by: </span>
           <Image
             src="/the_movie_db.svg"

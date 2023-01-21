@@ -64,13 +64,13 @@ const ConnectedNodeContainer = ({
     : [];
 
   return (
-    <div className="flex justify-center mt-40">
+    <div className="flex justify-center mt-[100px] mb-10 lg:mt-8 lg:mb-0">
       <ConnectedNodes
-        primarySize={510}
+        primarySize={350}
         primaryContent={primaryContent}
         primaryType={type}
         primaryImage={image}
-        secondarySize={200}
+        secondarySize={120}
         secondaryNodeArray={secondaryNodes}
         clickHandler={secondaryNodeClickHandler}
       />

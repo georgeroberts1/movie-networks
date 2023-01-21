@@ -42,10 +42,10 @@ function PrimaryNode({
         src={imageSrc}
         alt={"Picture of " + alt}
         width={primarySize}
-        height={primarySize}
+        height={0}
         priority={true}
         className={clsx(
-          "object-contain duration-500 transition-all ",
+          "object-contain duration-300 transition-all ",
           primaryHovering
             ? "rounded-[0] opacity-100"
             : "rounded-[50%] opacity-100",

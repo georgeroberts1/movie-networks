@@ -12,7 +12,33 @@ const SelectionNetwork = ({
   const dataListLength = selectedDataList.length;
   return (
     <>
-      <div className="flex justify-between lg:justify-evenly">
+      <div
+        className={clsx(
+          "flex flex-nowrap lg:flex-wrap overflow-auto overflow-x-auto lg:overflow-x-visible lg:h-[540px] transition-all",
+          targetFound && "justify-center"
+        )}
+      >
+        {selectedDataList
+          .map((data, i) => {
+            return (
+              <Fragment key={i}>
+                <Image
+                  alt=""
+                  width={120}
+                  height={0}
+                  src={data.image}
+                  className={clsx(
+                    "object-contain",
+                    targetConnectionsList.includes(data.id) &&
+                      "border-gold-[300]"
+                  )}
+                />
+              </Fragment>
+            );
+          })
+          .reverse()}
+      </div>
+      <div className="flex justify-between">
         {targetFound ? (
           <span className="bigFeedback">
             Found in {dataListLength} link
@@ -27,32 +53,6 @@ const SelectionNetwork = ({
         <button className="underline" onClick={handleResetGame}>
           Find another name
         </button>
-      </div>
-      <div
-        className={clsx(
-          "flex flex-nowrap lg:flex-wrap overflow-auto overflow-x-auto lg:overflow-x-visible transition-all",
-          targetFound && "justify-center"
-        )}
-      >
-        {selectedDataList
-          .map((data, i) => {
-            return (
-              <Fragment key={i}>
-                <Image
-                  alt=""
-                  height={150}
-                  width={100}
-                  src={data.image}
-                  className={
-                    targetConnectionsList.includes(data.id)
-                      ? "border-gold-[300]"
-                      : ""
-                  }
-                />
-              </Fragment>
-            );
-          })
-          .reverse()}
       </div>
     </>
   );

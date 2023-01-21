@@ -29,8 +29,6 @@ export default function MovieList({
             <ListItem
               key={i}
               imageSrc={fullPosterPath}
-              width={500}
-              height={750}
               alt={title}
               clickHandler={handleClick}
             />

@@ -21,7 +21,7 @@ const Header = ({ headerContent, boldHeaderContent, href }) => {
   return (
     <>
       <div className="h-[90px]" aria-label="proxy header"></div>
-      <header>
+      <header className={contextState.lightMode === "dark" && "bg-slate-100"}>
         <div className="headerColumn">
           <span className="headerTitle">
             {headerContent || ""}
@@ -35,7 +35,7 @@ const Header = ({ headerContent, boldHeaderContent, href }) => {
                 <Link
                   key={i}
                   href={element}
-                  className={clsx(href === element && "text-green-500")}
+                  className={href === element && "text-green-500"}
                 >
                   {linkLabel(element)}
                 </Link>
