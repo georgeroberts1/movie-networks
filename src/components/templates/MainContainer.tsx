@@ -23,7 +23,7 @@ export default function MainContainer({ children, ...props }: React.ReactNode) {
       </Head>
 
       <Header {...props} />
-      <main className={`w-screen py-2 px-3 transition-all flex`}>
+      <main className="w-screen py-2 px-3 transition-all flex flex-wrap lg:flex-nowrap">
         {children}
       </main>
 
