@@ -7,22 +7,32 @@ const SelectionNetwork = ({
   targetFound,
   handleResetGame,
 }) => {
+  const dataListLength = selectedDataList.length;
   return (
     <>
-      <span className="bigFeedback">
+      <div className="flex flex-col">
         {targetFound ? (
-          `Found in ${selectedDataList.length} link${
-            selectedDataList.length > 1 ? "s" : ""
-          }!`
-        ) : (
           <>
-            <span>Links:&nbsp;</span>
-            <span className="font-thin">{selectedDataList.length}</span>
+            <span className="bigFeedback">
+              Found in {dataListLength} link
+              {dataListLength > 1 ? "s" : ""}!
+            </span>
+            <button className="mt-10" onClick={handleResetGame}>
+              Find another name
+            </button>
           </>
+        ) : (
+          <div className="flex justify-between">
+            <span>
+              Links:&nbsp;
+              <span className="font-thin">{dataListLength}</span>
+            </span>
+            <button className="ml-10 underline" onClick={handleResetGame}>
+              Find another name
+            </button>
+          </div>
         )}
-        &nbsp; &nbsp; &nbsp;
-        <button onClick={handleResetGame}>Find another name</button>
-      </span>
+      </div>
       <div className="flex flex-nowrap lg:flex-wrap overflow-auto overflow-x-auto lg:overflow-x-visible transition-all">
         {selectedDataList
           .map((data, i) => {
