@@ -23,7 +23,7 @@ const SelectionNetwork = ({
         &nbsp; &nbsp; &nbsp;
         <button onClick={handleResetGame}>Find another name</button>
       </span>
-      <div>
+      <div className="flex flex-nowrap lg:flex-wrap overflow-auto overflow-x-auto lg:overflow-x-visible transition-all">
         {selectedDataList
           .map((data, i) => {
             return (

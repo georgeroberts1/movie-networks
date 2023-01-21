@@ -2,6 +2,7 @@ import ListItem from "../molecules/ListItem";
 import { getImageUrl } from "../../utils/api/urlUtils";
 
 import { GameStateTypes } from "../../types/app.types";
+import clsx from "clsx";
 
 export default function MovieList({
   movieArray,
