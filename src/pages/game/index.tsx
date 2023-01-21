@@ -2,15 +2,13 @@ import clsx from "clsx";
 
 import React, { useState, useReducer, useEffect } from "react";
 
-import Image from "next/image";
-import LoadingImage from "../../styles/assets/loader.png";
-
 import MovieList from "../../components/organisms/MovieList";
 import ConnectedNodeContainer from "../../components/organisms/ConnectedNodeContainer";
 import SelectionNetwork from "../../components/organisms/SelectionNetwork";
 
 import targets from "../../data/targetIds.json";
-import MainTemplate from "../../components/templates/MainTemplate";
+import MainContainer from "../../components/templates/MainContainer";
+import MainColumn from "../../components/templates/MainColumn";
 import { getPeopleOneDegreeFromTarget } from "../../data/generateTargetData";
 
 import { buildApiUrl } from "../../utils/api/urlUtils";
@@ -106,55 +104,38 @@ export default function Home({ upcomingFilms }) {
   };
 
   return (
-    <MainTemplate
+    <MainContainer
       headerContent="Find"
-      boldHeaderContent={targets[targetId]?.name || ""}
+      boldHeaderContent={targets[targetId]?.name}
       href={PageHrefs.GAME}
     >
-      {/* Node container */}
-      {!targetFound && selectedDataList.length > 0 && (
-        <div
-          className={clsx(
-            "flex justify-center items-center h-full mt-40",
-            isLoading ? "w-full" : "w-6/12"
-          )}
-        >
-          <ConnectedNodeContainer
-            selectedDataList={selectedDataList}
-            secondaryNodeClickHandler={handleSelectionClick}
-            secondaryNodeFilter={SecondaryNodeModes.GAME}
-            connectionsLoading={isLoading}
-            targetName={targets[targetId].name}
-          />
-        </div>
-      )}
-      {/* MovieList */}
-      <div
-        className={clsx(
-          "h-screen w-full justify-center overflow-auto overflow-y-auto",
-          targetFound || gameState === GameStateTypes.START
-            ? "w-full"
-            : "w-6/12"
-        )}
-      >
-        {selectedDataList.length === 0 && (
-          <MovieList
-            movieArray={upcomingFilmData}
-            gameState={gameState}
-            setGameState={setGameState}
-            selectionClickHandler={handleSelectionClick}
-          />
-        )}
+      <MainColumn isShowing={!targetFound && selectedDataList.length > 0}>
+        <ConnectedNodeContainer
+          selectedDataList={selectedDataList}
+          secondaryNodeClickHandler={handleSelectionClick}
+          secondaryNodeFilter={SecondaryNodeModes.GAME}
+          connectionsLoading={isLoading}
+          targetName={targets[targetId]?.name}
+        />
+      </MainColumn>
 
-        {!isLoading && (
-          <SelectionNetwork
-            selectedDataList={selectedDataList}
-            targetConnectionsList={targetConnectionsList}
-            targetFound={targetFound}
-            handleResetGame={handleResetGame}
-          />
-        )}
-      </div>
-    </MainTemplate>
+      <MainColumn isShowing={selectedDataList.length === 0}>
+        <MovieList
+          movieArray={upcomingFilmData}
+          gameState={gameState}
+          setGameState={setGameState}
+          selectionClickHandler={handleSelectionClick}
+        />
+      </MainColumn>
+
+      <MainColumn isShowing={!isLoading}>
+        <SelectionNetwork
+          selectedDataList={selectedDataList}
+          targetConnectionsList={targetConnectionsList}
+          targetFound={targetFound}
+          handleResetGame={handleResetGame}
+        />
+      </MainColumn>
+    </MainContainer>
   );
 }

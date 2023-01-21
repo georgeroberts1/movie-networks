@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from "react";
 
 import ConnectedNodeContainer from "../../components/organisms/ConnectedNodeContainer";
-import MainTemplate from "../../components/templates/MainTemplate";
+import MainContainer from "../../components/templates/MainContainer";
 
 import { SecondaryNodeModes } from "../../types/app.types";
 
@@ -72,7 +72,7 @@ export default function Home({ upcomingFilms }) {
   };
 
   return (
-    <MainTemplate boldHeaderContent={"Network"} href={PageHrefs.NETWORK}>
+    <MainContainer boldHeaderContent={"Network"} href={PageHrefs.NETWORK}>
       <div
         className={clsx("flex justify-center items-center w-full h-full mt-40")}
       >
@@ -86,6 +86,6 @@ export default function Home({ upcomingFilms }) {
           />
         )}
       </div>
-    </MainTemplate>
+    </MainContainer>
   );
 }

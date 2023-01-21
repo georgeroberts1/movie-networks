@@ -10,7 +10,11 @@ export default function MovieList({
   selectionClickHandler,
 }) {
   return (
-    <>
+    <div
+      className={clsx(
+        "h-screen w-full justify-center overflow-auto overflow-y-auto"
+      )}
+    >
       <span className="bigFeedback">
         Start by choosing one of these upcoming movies...
       </span>
@@ -33,6 +37,6 @@ export default function MovieList({
           />
         );
       })}
-    </>
+    </div>
   );
 }
