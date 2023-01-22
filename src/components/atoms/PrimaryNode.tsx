@@ -47,7 +47,7 @@ function PrimaryNode({
         className={clsx(
           "object-contain duration-300 transition-all rounded-[50%]",
           primaryHovering
-            ? "rounded-[0] opacity-100"
+            ? "rounded-0 opacity-100"
             : showContent
             ? "opacity-40"
             : "opacity-100"

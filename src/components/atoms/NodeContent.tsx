@@ -11,8 +11,10 @@ const NodeContent = ({ showContent, primaryHovering }: NodeContentProps) => {
         primaryHovering ? "top-[80%]" : "top-[50%]"
       )}
     >
-      <p className="text-green-500">{line1}</p>
-      <p className="text-green-500">{line2}</p>
+      <div className="nodeContentContainer">
+        <p>{line1}</p>
+        {line2 && <p>{line2}</p>}
+      </div>
     </div>
   );
 };

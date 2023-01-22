@@ -33,4 +33,8 @@
   .bigFeedback{
     @apply flex justify-center items-center font-thin text-xl;
   }
+
+  .nodeContentContainer {
+    @apply font-medium m-1 p-2 bg-black rounded-2xl
+  }
 }
