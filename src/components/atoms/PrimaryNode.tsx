@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import NodeContent from "./NodeContent";
 
-import { PrimaryNodeProps } from "../../types/component.types";
+import type { PrimaryNodeProps } from "../../types/component.types";
 import clsx from "clsx";
 
 function PrimaryNode({
@@ -45,11 +45,12 @@ function PrimaryNode({
         height={0}
         priority={true}
         className={clsx(
-          "object-contain duration-300 transition-all ",
+          "object-contain duration-300 transition-all rounded-[50%]",
           primaryHovering
             ? "rounded-[0] opacity-100"
-            : "rounded-[50%] opacity-100",
-          showContent ? "opacity-[0.4]" : "opacity-100"
+            : showContent
+            ? "opacity-40"
+            : "opacity-100"
         )}
       ></Image>
     </div>

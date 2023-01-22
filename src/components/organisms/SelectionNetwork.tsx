@@ -11,7 +11,7 @@ const SelectionNetwork = ({
   const dataListLength = selectedDataList.length;
   return (
     <>
-      <div className="flex justify-between">
+      <div className={`flex justify-${targetFound ? "center" : "between"}`}>
         {targetFound ? (
           <span className="bigFeedback">
             Found in {dataListLength} link
@@ -26,7 +26,7 @@ const SelectionNetwork = ({
       </div>
       <div
         className={clsx(
-          "flex flex-nowrap lg:flex-wrap overflow-auto overflow-x-auto lg:overflow-x-visible lg:max-h-[540px] transition-all justify-start",
+          "flex flex-nowrap lg:flex-wrap overflow-auto overflow-x-auto lg:overflow-x-visible min-w-[580px] lg:max-h-[540px] transition-all justify-start",
           targetFound && "justify-center"
         )}
       >

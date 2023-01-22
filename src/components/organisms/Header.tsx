@@ -25,7 +25,7 @@ const Header = ({ headerContent, boldHeaderContent, href, ...props }) => {
         <div className="headerColumn">
           <span className="flex items-center headerTitle">
             {headerContent || ""}
-            <span className="font-light">&nbsp;{boldHeaderContent}</span>
+            <b>&nbsp;{boldHeaderContent}</b>
             {!!props.handleResetGame && (
               <VscDebugRestart
                 onClick={props.handleResetGame}

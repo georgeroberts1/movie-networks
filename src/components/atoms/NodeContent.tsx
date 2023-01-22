@@ -1,6 +1,5 @@
 import React from "react";
-import { useAppContext } from "../organisms/ContextWrapper";
-import { NodeContentProps } from "../../types/component.types";
+import type { NodeContentProps } from "../../types/component.types";
 import clsx from "clsx";
 const NodeContent = ({ showContent, primaryHovering }: NodeContentProps) => {
   const { line1, line2 } = showContent || {};
@@ -12,8 +11,8 @@ const NodeContent = ({ showContent, primaryHovering }: NodeContentProps) => {
         primaryHovering ? "top-[80%]" : "top-[50%]"
       )}
     >
-      <h2>{line1}</h2>
-      <h3>{line2}</h3>
+      <p className="text-green-500">{line1}</p>
+      <p className="text-green-500">{line2}</p>
     </div>
   );
 };

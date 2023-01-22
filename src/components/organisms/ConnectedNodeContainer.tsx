@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import ConnectedNodes from "../molecules/ConnectedNodes";
 import { createContent, getSecondaryNodes } from "../../utils/Common";
 import { getCreditsUrl } from "../../utils/api/urlUtils";
-import { ConnectedNodeContainerProps } from "../../types/component.types";
+import type { ConnectedNodeContainerProps } from "../../types/component.types";
 
 const ConnectedNodeContainer = ({
   selectedDataList,
