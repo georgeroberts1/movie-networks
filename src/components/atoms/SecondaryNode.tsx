@@ -83,7 +83,7 @@ function SecondaryNode({
           quality={50}
           className={clsx(
             "object-contain duration-300",
-            imageType === "movie" ? "rounded-[0]" : "rounded-[50%]"
+            imageType === "movie" ? "rounded-[0]" : "rounded-full"
           )}
         ></Image>
       </div>

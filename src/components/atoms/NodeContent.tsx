@@ -12,7 +12,7 @@ const NodeContent = ({ showContent, primaryHovering }: NodeContentProps) => {
       )}
     >
       <div className="nodeContentContainer">
-        <p>{line1}</p>
+        {line1 && <p>{line1}</p>}
         {line2 && <p>{line2}</p>}
       </div>
     </div>
