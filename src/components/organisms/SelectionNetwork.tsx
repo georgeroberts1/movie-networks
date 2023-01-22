@@ -7,14 +7,26 @@ const SelectionNetwork = ({
   selectedDataList,
   targetConnectionsList,
   targetFound,
-  handleResetGame,
 }) => {
   const dataListLength = selectedDataList.length;
   return (
     <>
+      <div className="flex justify-between">
+        {targetFound ? (
+          <span className="bigFeedback">
+            Found in {dataListLength} link
+            {dataListLength > 1 ? "s" : ""}!
+          </span>
+        ) : (
+          <span>
+            Links:&nbsp;
+            <span className="font-thin">{dataListLength}</span>
+          </span>
+        )}
+      </div>
       <div
         className={clsx(
-          "flex flex-nowrap lg:flex-wrap overflow-auto overflow-x-auto lg:overflow-x-visible lg:h-[540px] transition-all",
+          "flex flex-nowrap lg:flex-wrap overflow-auto overflow-x-auto lg:overflow-x-visible lg:max-h-[540px] transition-all justify-start",
           targetFound && "justify-center"
         )}
       >
@@ -37,22 +49,6 @@ const SelectionNetwork = ({
             );
           })
           .reverse()}
-      </div>
-      <div className="flex justify-between">
-        {targetFound ? (
-          <span className="bigFeedback">
-            Found in {dataListLength} link
-            {dataListLength > 1 ? "s" : ""}!
-          </span>
-        ) : (
-          <span>
-            Links:&nbsp;
-            <span className="font-thin">{dataListLength}</span>
-          </span>
-        )}
-        <button className="underline" onClick={handleResetGame}>
-          Find another name
-        </button>
       </div>
     </>
   );

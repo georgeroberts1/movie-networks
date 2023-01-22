@@ -1,19 +1,19 @@
 import { BsMoon, BsSun } from "react-icons/bs";
+import { VscDebugRestart } from "react-icons/vsc";
 import { useAppContext } from "./ContextWrapper";
 import { StateReducerActions } from "../../types/app.types";
 import { PageHrefs } from "../../types/app.types";
 import Link from "next/link";
-import clsx from "clsx";
 
-const Header = ({ headerContent, boldHeaderContent, href }) => {
+const Header = ({ headerContent, boldHeaderContent, href, ...props }) => {
   const [contextState, contextDispatch] = useAppContext();
-  const handleClick = () =>
-    contextDispatch({ type: StateReducerActions.SWITCH_LIGHT_MODE });
 
   const hrefArray = Object.values(PageHrefs);
   const linkLabel = (href) => href.split("/")[1].toUpperCase();
 
-  const iconProps = {
+  const handleClick = () =>
+    contextDispatch({ type: StateReducerActions.SWITCH_LIGHT_MODE });
+  const getDarkModeProps = {
     onClick: handleClick,
     className: "cursor-pointer",
   };
@@ -23,9 +23,15 @@ const Header = ({ headerContent, boldHeaderContent, href }) => {
       <div className="h-[90px]" aria-label="proxy header"></div>
       <header className={contextState.lightMode === "dark" && "bg-slate-100"}>
         <div className="headerColumn">
-          <span className="headerTitle">
+          <span className="flex items-center headerTitle">
             {headerContent || ""}
             <span className="font-light">&nbsp;{boldHeaderContent}</span>
+            {!!props.handleResetGame && (
+              <VscDebugRestart
+                onClick={props.handleResetGame}
+                className="cursor-pointer ml-3 text-green-500 -scale-y-100 duration-500 hover:rotate-180"
+              />
+            )}
           </span>
         </div>
         <div className="headerColumn">
@@ -43,9 +49,9 @@ const Header = ({ headerContent, boldHeaderContent, href }) => {
             ))}
             <li className="mb-1 sm:mb-0">
               {contextState.lightMode === "light" ? (
-                <BsSun {...iconProps} />
+                <BsSun {...getDarkModeProps} />
               ) : (
-                <BsMoon {...iconProps} />
+                <BsMoon {...getDarkModeProps} />
               )}
             </li>
           </ul>

@@ -5,6 +5,7 @@ export enum ApiConfig {
 
 export enum GameStateTypes {
   START = "START",
+  TARGET_CHOSEN = "TARGET_CHOSEN",
   FILM_CHOSEN = "FILM_CHOSEN",
   TARGET_FOUND = "TARGET_FOUND",
 }

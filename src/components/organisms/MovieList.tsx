@@ -21,7 +21,7 @@ export default function MovieList({
           const fullPosterPath = getImageUrl(poster_path, "w500");
           const handleClick = () => {
             selectionClickHandler(movie, fullPosterPath, "movie");
-            gameState === GameStateTypes.START &&
+            gameState === GameStateTypes.TARGET_CHOSEN &&
               setGameState(GameStateTypes.FILM_CHOSEN);
           };
 

@@ -24,7 +24,6 @@ import {
 } from "../../types/app.types";
 
 const getRandomElement = (arr) => {
-  console.log("Get random element");
   const targetId = arr[Math.floor(Math.random() * arr.length)];
   console.log(targets[targetId].name);
   return targetId;
@@ -52,11 +51,20 @@ export default function Home({ upcomingFilms }) {
   const [targetConnectionsList, setTargetConnectionsList] = useState();
   const [gameState, setGameState] = useState(GameStateTypes.START);
 
+  const setNewTarget = () => {
+    const nextTargetId = getRandomElement(Object.keys(targets));
+    console.log("Setting targetId", nextTargetId);
+    setTargetId(nextTargetId);
+    console.log("Called resetTargetConnections");
+    resetTargetConnections(nextTargetId);
+    setGameState(GameStateTypes.TARGET_CHOSEN);
+  };
+
   const handleResetGame = () => {
+    console.log("GAME RESET");
     dataListDispatch({ type: StateReducerActions.CLEAR_LIST });
     setIsLoading(false);
-    setTargetId();
-    setGameState(GameStateTypes.START);
+    setNewTarget();
   };
 
   const resetTargetConnections = async (id) => {
@@ -74,11 +82,7 @@ export default function Home({ upcomingFilms }) {
     console.log("isLoading:", isLoading);
 
     if (gameState === GameStateTypes.START) {
-      const nextTargetId = getRandomElement(Object.keys(targets));
-      console.log("Setting targetId", nextTargetId);
-      setTargetId(nextTargetId);
-      console.log("Called resetTargetConnections");
-      resetTargetConnections(nextTargetId);
+      setNewTarget();
     }
   }, [gameState]);
 
@@ -108,6 +112,7 @@ export default function Home({ upcomingFilms }) {
     <MainContainer
       headerContent="Find"
       boldHeaderContent={targets[targetId]?.name}
+      handleResetGame={handleResetGame}
       href={PageHrefs.GAME}
     >
       <MainColumn isShowing={selectedDataList.length === 0}>
@@ -146,7 +151,6 @@ export default function Home({ upcomingFilms }) {
               selectedDataList={selectedDataList}
               targetConnectionsList={targetConnectionsList}
               targetFound={targetFound}
-              handleResetGame={handleResetGame}
             />
           </MainColumn>
         </>
